@@ -1,0 +1,58 @@
+@mixin webkit-scroller {
+  &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+      background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+      border: none;
+      background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background-clip: padding-box;
+      background-color: rgba($brand-p2, 0.6);
+      border: solid transparent;
+      min-height: 100px;
+      -webkit-box-shadow: inset -1px -1px 0px transparent, inset 1px 1px 0px transparent;
+      
+      &:vertical {
+          border-width: 5px 5px 5px 0;
+      }
+      &:horizontal {
+          border-width: 5px 5px 0 5px;
+      }
+
+      &:hover {
+          background-color: $brand-p1;
+      }
+  }
+
+  &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+      display: none;
+  }
+
+  &::-webkit-scrollbar-corner {
+      background-color: transparent;
+  }
+}
+@mixin select-webkit-scroller {
+@include webkit-scroller;
+}
+
+@mixin dropdown-webkit-scroller {
+
+  @include webkit-scroller;
+  &::-webkit-scrollbar {
+      width: 6px !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      &:vertical {
+          border-width: 3px 3px 3px 0 !important;
+      }
+  }
+}

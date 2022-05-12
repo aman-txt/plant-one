@@ -1,0 +1,169 @@
+#image: node:12-alpine
+image: ubuntu:latest
+
+stages:
+  - test-server
+  - build-server-client
+  - deploy-heroku-staging-server
+  - code_quality
+  - deploy-heroku-staging-client
+  
+# test stage will compile the code and run all the unit tests present in the
+# test folder.
+test:
+  stage: test-server
+  image: maven:latest  
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - cd plantOne
+    - mvn clean verify
+    
+# build stage will just build the codebase without running
+# any tests or creating any jar file.
+build dev:
+  stage: build-server-client
+  image: maven:latest
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - cd plantOne
+    - mvn clean install -DskipTests=true
+  artifacts:
+    paths:
+      - plantOne/target/*.jar
+  except:
+    - main
+    - tags
+
+build test:
+  stage: build-server-client
+  image: maven:latest
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - cd plantOne
+    - mvn clean install -DskipTests=true -Ptest
+  artifacts:
+    paths:
+       - plantOne/target/*.jar
+  only:
+    - main
+
+build prod:
+  stage: build-server-client
+  image: maven:latest
+  tags:
+    - dalfcs_docker_autoscale
+  script:
+    - cd plantOne
+    - mvn clean install -DskipTests=true -Pprod
+  artifacts:
+    paths:
+       - plantOne/target/*.jar
+  only:
+    - tags
+
+#Configuration to QServer as a code quality measure
+
+
+code_quality: 
+  stage: code_quality
+  variables:
+    UPLOAD_QUALITY_REPORT: 'curl -X PUT -H "Authorization: Token $QSCORED_API_KEY" -H "repository-link: $CI_PROJECT_URL" +  -H "username: sr215260@dal.ca" -H "Content-Type: mulitpart/form-data" --url "https://qscored.com/api/upload/file.xml?is_open_access=false&version=$CI_PIPELINE_IID&project_name=group12" -F "file=@Designite_output/DesigniteAnalysis.xml"'
+  before_script:
+    - apt-get update
+    - ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
+    - apt-get --yes --force-yes install wget curl maven git
+  script:
+    - wget -O DesigniteJava.jar https://www.dropbox.com/s/mwizkj8uhplz4x3/DesigniteJava.jar?dl=1
+    - java -jar DesigniteJava.jar -ci -repo "csci-5308/group12" -pat $PAT -host "git.cs.dal.ca/courses/2022-winter/"
+    - 'eval "$UPLOAD_QUALITY_REPORT"'
+  only:
+    refs:
+      - main
+      
+
+Build Client:  
+  stage: build-server-client
+  image: node:16  
+  tags:    
+    - dalfcs_docker_autoscale  
+  script:    
+    - cd plant-one-ui    
+    - npm install
+    - npm run build:testing
+    
+## deploy stage will create package the jar and keep it in the target folder.
+## The success of deploy stage will mark the pipeline as passed.
+deploy testing server:
+  stage: deploy-heroku-staging-server
+  image: ruby:latest
+  tags:
+    - dalfcs_docker_autoscale  
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+  script:
+    - > 
+      curl --request PATCH "https://api.heroku.com/apps/$HEROKU_APP_NAME_FOR_TEST/config-vars"  
+      --data "{\"SPRING_PROFILES_ACTIVE\": \"test\"}" 
+      --header "Content-Type: application/json" 
+      --header "Accept: application/vnd.heroku+json; version=3" 
+      --header "Authorization: Bearer $HEROKU_API_KEY"
+    - cd plantOne
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME_FOR_TEST --api-key=$HEROKU_API_KEY --cleanup
+  only:
+    - main
+
+deploy testing client:
+  stage: deploy-heroku-staging-client
+  image: ruby:latest
+  tags:
+    - dalfcs_docker_autoscale  
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+  script:
+    - cd plant-one-ui
+    - dpl --provider=heroku --app=$HEROKU_APP_UI_FOR_TEST --api-key=$HEROKU_API_KEY --cleanup
+  only:
+    - main
+    
+deploy production server:
+  stage: deploy-heroku-staging-server
+  image: ruby:latest
+  tags:
+    - dalfcs_docker_autoscale  
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+  script:
+    - >
+      curl --request PATCH "https://api.heroku.com/apps/$HEROKU_APP_NAME_FOR_PRODUCTION/config-vars"  
+      --data "{\"SPRING_PROFILES_ACTIVE\": \"prod\"}" 
+      --header "Content-Type: application/json" 
+      --header "Accept: application/vnd.heroku+json; version=3" 
+      --header "Authorization: Bearer $HEROKU_API_KEY"
+    - cd plantOne
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME_FOR_PRODUCTION --api-key=$HEROKU_API_KEY --cleanup
+  only:
+    - tags    
+
+deploy production client:
+  stage: deploy-heroku-staging-client
+  image: ruby:latest
+  tags:
+    - dalfcs_docker_autoscale  
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+  script:
+    - cd plant-one-ui
+    - dpl --provider=heroku --app=$HEROKU_APP_UI_FOR_PRODUCTION --api-key=$HEROKU_API_KEY --cleanup
+  only:
+    - tags

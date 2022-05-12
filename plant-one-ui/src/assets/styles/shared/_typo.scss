@@ -1,0 +1,264 @@
+@mixin is-size-h1-r{
+  font-size: $h1-size;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h1-l{
+  font-size: $h1-size;
+  font-weight: 300;
+  line-height: 36px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h1-sb{
+  font-size: $h1-size;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h1-b{
+  font-size: $h1-size;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// styles for h2 size
+@mixin is-size-h2-l{
+  font-size: $h2-size;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h2-r{
+  font-size: $h2-size;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h2-sb{
+  font-size: $h2-size;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h2-b{
+  font-size: $h2-size;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// styles for h3
+@mixin is-size-h3-l{
+  font-size: $h3-size;
+  font-weight: 300;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h3-r{
+  font-size: $h3-size;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h3-sb{
+  font-size: $h3-size;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h3-b{
+  font-size: $h3-size;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// styles for h4
+@mixin is-size-h4-l{
+  font-size: $h4-size;
+  font-weight: 300;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h4-r{
+  font-size: $h4-size;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h4-sb{
+  font-size: $h4-size;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h4-b{
+  font-size: $h4-size;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// styles for h5
+@mixin is-size-h5-l{
+  font-size: $h5-size;
+  font-weight: 300;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h5-r{
+  font-size: $h5-size;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h5-sb{
+  font-size: $h5-size;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h5-b{
+  font-size: $h5-size;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// styles for h6
+@mixin is-size-h6-l{
+  font-size: $h6-size;
+  font-weight: 300;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h6-r{
+  font-size: $h6-size;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h6-sb{
+  font-size: $h6-size;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h6-b{
+  font-size: $h6-size;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// styles for h7
+@mixin is-size-h7-l{
+  font-size: $h7-size;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h7-r{
+  font-size: $h7-size;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h7-sb{
+  font-size: $h7-size;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin is-size-h7-b{
+  font-size: $h7-size;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.25px;
+  word-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

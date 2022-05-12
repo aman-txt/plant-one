@@ -1,0 +1,181 @@
+/* HTML ELEMENTS CUSTOM CSS */
+* {
+  box-sizing: border-box;
+
+  &:after,
+  &:before {
+    box-sizing: border-box;
+  }
+}
+
+a,
+a:active,
+a:focus,
+a:hover,
+button,
+button:active,
+button:focus,
+button:hover {
+  outline: none;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0px;
+  margin: 0px;
+}
+
+ul,
+ol,
+dl {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  @include webkit-scroller;
+  line-height: normal;
+  background-color: $brand-n7;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  // padding-bottom: 30px;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.breadcrumb-container {
+  height: 16px;
+  margin-bottom: 4px;
+
+  .crumb-txt {
+    margin-left: 2px;
+    @include is-size-h6-r;
+    color: $brand-p1 !important;
+    cursor: pointer;
+  }
+}
+
+.page-header-wrapper {
+  @include flexbox;
+  @include flex-direction(column);
+  margin: 0 0 48px 0;
+
+  .page-header {
+    @include flexbox;
+    @include align-items(center);
+    min-height: 35px;
+
+    & .title {
+      @include is-size-h1-l;
+      color: $brand-n1;
+    }
+
+    & .action-container {
+      margin-left: auto;
+      @include flexbox;
+      @include align-items(center);
+
+      &>button:first-child {
+        margin-right: 12px;
+      }
+
+      &>button:last-child {
+        margin-right: 0px;
+      }
+
+      & .more-actions {
+        margin-left: 10px;
+
+        .action-icon-wrapper {
+          height: 36px;
+          width: 36px;
+          font-size: 26px;
+        }
+      }
+    }
+  }
+
+  .page-description {
+    @include is-size-h6-r;
+    color: $brand-n2;
+    max-width: 650px;
+    margin-top: 8px;
+  }
+}
+
+.filter-container {
+  margin-top: 30px;
+  height: 69px;
+  width: 100%;
+  border-radius: 2px;
+  @include shadow-style-1;
+  @include flexbox;
+  @include align-items(center);
+  padding: 0 20px;
+
+  & .filter-item {
+    margin-right: 15px;
+    @include flexbox;
+    @include align-items(center);
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  & .action-container {
+    margin-left: auto;
+    @include flexbox;
+    @include align-items(center);
+
+    & .action-item {
+      margin-left: 15px;
+
+      &:first-child {
+        margin-left: 0px;
+      }
+    }
+  }
+}

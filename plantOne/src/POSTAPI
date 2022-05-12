@@ -1,0 +1,127 @@
+//Change all UUIDs according to the data
+Request - POST
+URL - http://localhost:8081/plantone/api/v1/users/
+Body - {
+       "city": "Surat",
+       "country": "India",
+       "dob": "2022-03-10",
+       "email": "sahil@gmail.com",
+       "first_name": "Sahil",
+       "last_name": "Parekh",
+       "password": "root",
+       "postal_code": "395009",
+       "street": "Adajan",
+       "user_role": "user,admin",
+       "username": "Sahil3198"
+       }
+
+
+Request - POST
+URL - http://localhost:8081/plantone/api/v1/post/
+Body - None
+
+
+Request - POST
+URL - http://localhost:8081/plantone/api/v1/post/add
+Body - {
+       "title": "Lily plant",
+       "timestamp": "2022-03-13T00:00:11.534Z",
+       "is_archive": "false",
+       "price": "0",
+       "plantType": {
+           "plantTypeId" : "d1a78353-9bf1-4996-85ad-acc62041641f"
+       },
+       "postType": {
+           "postTypeId" : "e04a8cbd-6109-4f57-9ccb-7d9bbdebdddf"
+       },
+       "seller" : {
+          "user_id":  "189f7b1f-0238-42d7-8059-59295399e6c8"
+                }
+       }  //Change UUID accordingly, should be present in the DB.
+
+
+Request - POST
+URL - http://localhost:8081/plantone/api/v1/plantone/event/add
+Body - {
+         "available_seats" : 50,
+         "date": "2022-03-10",
+         "details": "test",
+         "link": "test",
+         "maximum_seats": 50,
+         "mode": "virtual",
+         "title": "Plantation drive - 20/03",
+         "user" : {
+               "user_id" : "2a4e18d2-461a-4696-84a4-1fe2287ef2e2"
+         }
+       }
+
+Reuqest -POST
+URL - http://localhost:8081/plantone/api/v1/event/add
+Body - {
+
+                "date": "2022-03-10",
+                "details": "Plants",
+                "link": "test",
+                "maximum_seats": 2,
+                "mode": "virtual",
+                "title": "Plantation drive - 30/03",
+                "user" : {
+                      "user_id" : "7bc0d9e1-e948-4b10-82c9-b30e67d60f61"
+                }
+       }
+
+Request - POST
+URL - http://localhost:8081/plantone/api/v1/event/register/{event_id}
+Body - {
+          "event" : {
+                "eventUUID": "e5d86070-f7c9-4369-8f76-4808fcf49dd2",
+           "user": {
+                   "user_id": "7bc0d9e1-e948-4b10-82c9-b30e67d60f61",
+                   "first_name": "Ruby",
+                   "last_name": "Singh",
+                   "username": "Rub12",
+                   "password": "$2a$10$XYQA/tgH7HxDLOiga4Ju..6hqTTsWd.FPc7jq6HX9yQhr5Jnlcwo.",
+                   "activeUser": true,
+                   "user_role": "user",
+                   "email": "test3@gmail.com",
+                   "street": "Mumford Road",
+                   "city": "Halifax",
+                   "country": "India",
+                   "postal_code": "B3L2N3",
+                   "dob": "1985-09-15",
+                   "hibernateLazyInitializer": {}
+               },
+               "title": "Plantation drive - 20/03",
+               "details": "test",
+               "link": "test",
+               "maximum_seats": 50,
+               "available_seats": 50,
+               "mode": "virtual",
+               "date": "2022-03-30T03:00:00.000+00:00"
+           },
+          "user": {
+           "user_id": "980a891c-f7aa-4b2c-8e94-5d1a47918836",
+           "first_name": "John",
+           "last_name": "Doe",
+           "username": "Rub121",
+           "user_role": "user",
+           "email": "test@gmail.com",
+           "street": "Mumford Road",
+           "city": "Halifax",
+           "country": "India",
+           "postal_code": "B3L2N3",
+           "dob": "1985-09-16T00:00:00.000+00:00"
+       }
+       }
+
+Request - POST
+URL - http://localhost:8081/plantone/api/v1/cart/add/{post_id}
+Body - None
+
+Request - POST
+URL - http://localhost:8081/plantone/api/v1/cart/add/{cart_id}/{post_id}
+Body - {
+           "user" : {
+            "user_id":  "189f7b1f-0238-42d7-8059-59295399e6c8"
+           }
+       }

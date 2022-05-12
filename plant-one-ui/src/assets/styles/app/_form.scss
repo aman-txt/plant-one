@@ -1,0 +1,177 @@
+$label-color:  $brand-n2;
+$columns: 100;
+$percentage:"%";
+
+.field-wrapper{
+  margin-bottom: 30px;
+  width: 100%;
+  position: relative;
+
+  &.view{
+    margin-bottom: 30px;
+  }
+
+  &.width-auto{
+    display: table;
+    width: auto;
+  }
+
+  &.form-flex-row{
+    @include flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    width: auto;
+  }
+
+  & .vertical-middle{
+    @include flexbox;
+    @include flex-direction(row);
+    @include align-items(center);
+  }
+
+  &.form-flex-col{
+    @include flexbox;
+    @include flex-direction(column);
+  }
+
+  @for $i from 1 through 100 {
+    .form-flex-col-#{$i} {
+      @include flex(0 0 #{$i}#{$percentage});
+      padding: 0 15px;
+     }
+  }
+}
+.form-description{
+  @include is-size-h5-r;
+  color:$brand-n2;
+  
+  .btn-plant-one-link {
+    @include is-size-h5-r;
+  }
+}
+
+.form-label{
+  @include is-size-h5-r;
+  color: $label-color;
+
+  margin-bottom: unset;
+  &.label {
+    padding-top: 22px;
+  }
+}
+
+.form-value{
+  @include is-size-h4-r;
+  color: $brand-n1;
+
+  &.wrap-text {
+    @include text-overflow;
+  }
+
+  &.link,& .link{
+    cursor: pointer;
+    color: $brand-p1 !important;
+  }
+}
+
+.form-card {
+  @include shadow-style-1;
+  border-radius: 2px;
+  margin: 0 0 30px 0;
+  max-width: 800px;
+  background-color: $brand-n8;
+
+  &.full{
+    max-width: unset;
+  }
+  &.md{
+    max-width: 900px;
+  }
+
+  .btn-plant-one-action {
+    padding: 0px;
+  }
+
+  .form-card-header {
+    padding: 40px 40px 40px 40px;
+    position: relative;
+  }
+
+  .card-title {
+    color: $brand-n1;
+    @include is-size-h3-b;
+    margin: 0;
+  }
+
+  .card-subtitle {
+    color: $brand-n1;
+    @include is-size-h4-b;
+  }
+
+  .card-description {
+    @include is-size-h5-r;
+    margin-top: 4px;;
+    color: $brand-n3;
+    max-width: 80%;
+
+    &.full{
+      max-width: 100%;
+    }
+  }
+
+  .card-title,
+  .card-description {
+    @include flexbox;
+
+    .actions {
+      .btn-plant-one-link, .btn-plant-one-action {
+        margin: 0 0 0 10px;
+        font-weight: 400;
+      }
+
+      .btn-plant-one-link {
+        @include is-size-h5-r;
+      }
+    }
+  }
+
+  .separator{
+    width: 100%;
+    height: 1px;
+    background-color: $brand-n5;
+  }
+
+  .card-body {
+    padding: 0 40px 10px 40px;
+
+    .separator{
+      margin-bottom: 20px;
+    }
+  }
+
+  .card-footer {
+    @include flexbox;
+    @include flex-direction(row);
+    @include justify-content(flex-end);
+
+    &.sm {
+      @include justify-content(flex-start);
+      @include align-items(center);
+      padding: 10px 40px;
+      border-top: 1px solid $brand-n6;
+    }
+
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 30px 40px;
+    min-height: 40px;
+    margin-top: auto;
+    background-color: transparent;
+
+    & button:last-child{
+      margin-left: 12px;
+    }
+  }
+}

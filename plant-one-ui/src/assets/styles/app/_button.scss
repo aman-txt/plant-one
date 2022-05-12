@@ -1,0 +1,190 @@
+// override below varible according to themes into specific theme scss
+
+$btn-primary-bg:                  $brand-p1;
+$btn-primary-color:               $brand-n8;
+$btn-primary-border-color:        $brand-p1;
+$btn-primary-hover-color:         $brand-p2;
+$btn-primary-disabled-bg:         $brand-n4;
+
+$btn-secondary-bg:                $brand-n8;
+$btn-secondary-color:             $brand-p1;
+$btn-secondary-border-color:      $brand-p1;
+$btn-secondary-hover-color:       $brand-n7;
+$btn-secondary-disabled-bg:       $brand-n8;
+$btn-secondary-disabled-color:    $brand-n4;
+
+$btn-tertiary-bg:                $brand-n7;
+$btn-tertiary-color:             $brand-p1;
+$btn-tertiary-border-color:      $brand-n8;
+$btn-tertiary-hover-color:       $brand-n7;
+$btn-tertiary-disabled-bg:       $brand-n7;
+$btn-tertiary-disabled-color:    $brand-n3;
+$btn-tertiary-with-border-color: $brand-n5;
+$btn-tertiary-with-border-hover: $brand-n9;
+
+$btn-link-color:                 $brand-p1;
+$btn-link-disabled-color:        $brand-n4;
+
+@mixin btn-plant-one{
+  padding: 0 25px;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  text-decoration: none;
+  text-align: center;
+
+  @include transition-multiple(color .3s,border-color .3s,background-color .3s);
+  & span.icon{
+    margin-right: 5px;
+  }
+  & span.after-icon{
+    margin-left: 5px;
+    margin-right: 0px;
+  }
+  &.icon{
+    display: inline-flex;
+    align-items:center;
+  }
+}
+.btn-plant-one{
+  @include btn-plant-one;
+  position: relative;
+  &.lg{
+    @include is-size-h3-sb;
+    padding-top: 9px;
+    padding-bottom: 9px;
+     &.icon{
+      line-height: 21px;
+      padding-left:  15px;
+      padding-right:  15px;
+    }
+    & span.icon{
+      font-size: 18px;
+    }
+  }
+  &.md{
+    @include is-size-h5-sb;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    & span.icon{
+      font-size: 18px;
+    }
+    &.icon{
+      line-height: 18px;
+      padding-left:  15px;
+      padding-right:  15px;
+    }
+  }
+  &.sm{
+    @include is-size-h6-sb;
+    padding: 4px 12px;
+
+    &.icon{
+      line-height: 15px;
+      padding-left:  15px;
+      padding-right:  15px;
+    }
+    & span.icon{
+      font-size: 16px;
+    }
+  }
+  & [disabled],&:disabled { 
+      cursor: not-allowed!important;
+  }
+  &.disabled{
+    pointer-events: none;
+    cursor: not-allowed!important;
+  }
+}
+
+// specidic style color for primary button
+.btn-plant-one-primary{
+  @extend .btn-plant-one;
+  color:$btn-primary-color;
+  background-color: $btn-primary-bg;
+  border-color: $btn-primary-border-color;
+  &:focus,&:active,&:hover{
+    background-color: $btn-primary-hover-color;
+    border-color: $btn-primary-hover-color;
+  }
+  
+  &.disabled,&:disabled{
+    background-color: $btn-primary-disabled-bg;
+    border-color: $btn-primary-disabled-bg;
+  }
+}
+
+// specidic style color for secondary button
+.btn-plant-one-secondary{
+  @extend .btn-plant-one;
+  color:$btn-secondary-color;
+  background-color: $btn-secondary-bg;
+  border-color: $btn-secondary-border-color;
+  &:focus,&:active,&:hover{
+    background-color: $btn-secondary-hover-color;
+  }
+  &.disabled,&:disabled{
+    background-color: $btn-secondary-disabled-bg;
+    border-color: $btn-secondary-disabled-color;
+    color: $btn-secondary-disabled-color;
+  }
+}
+
+// specidic style color for tertiary button
+.btn-plant-one-tertiary{
+  @extend .btn-plant-one;
+  color:$btn-tertiary-color;
+  background-color: $btn-tertiary-bg;
+  border-color: $btn-tertiary-border-color;
+  &:focus,&:active,&:hover{
+    background-color: $btn-tertiary-hover-color;
+    border-color: $btn-tertiary-hover-color;
+  }
+  &.disabled,&:disabled{
+    background-color: $btn-tertiary-disabled-bg;
+    color: $btn-tertiary-disabled-color;
+  }
+  &.with-border {
+    border-color: $btn-tertiary-with-border-color;
+    &:focus,&:active,&:hover{
+      border-color: $btn-tertiary-with-border-hover;
+    }
+  }
+}
+
+// specidic style color for tertiary button
+.btn-plant-one-action{
+  @extend .btn-plant-one;
+  padding: 7px 15px;
+  color:$btn-tertiary-color;
+  background-color: $btn-tertiary-bg;
+  border-color: $btn-tertiary-border-color;
+  &.disabled,&:disabled{
+    background-color: $btn-tertiary-disabled-bg;
+    color: $btn-tertiary-disabled-color;
+  }
+}
+.btn-plant-one-link{
+  @include is-size-h6-r;
+  color: $btn-link-color !important;
+  cursor:pointer;
+  border-bottom: 1px solid;
+  border-color: transparent;
+  &:hover{
+    border-color: $btn-link-color;
+    text-decoration: none;
+  }
+  &.md{
+    @include is-size-h5-r;
+  }
+  &.lg{
+    @include is-size-h4-r;
+  }
+  &.disabled,&:disabled{
+    color: $btn-link-disabled-color !important;
+    border-bottom: unset;
+    cursor: default;
+    pointer-events: none;
+  }
+}

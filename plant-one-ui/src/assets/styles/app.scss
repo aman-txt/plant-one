@@ -1,0 +1,135 @@
+/* third party libs */
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap-vue/dist/bootstrap-vue.css";
+
+/* in-house scss */
+@import "app/base";
+@import "app/button";
+@import "app/form";
+
+.auth-section {
+  height: 100%;
+  overflow: auto;
+  @include flexbox;
+  @include webkit-scroller;
+  @include align-items(center);
+  @include flex-direction(column);
+  background-color: $auth-flow-bg-color;
+}
+.auth-header {
+  margin: 54px 0;
+  @include flexbox;
+  @include justify-content(center);
+  
+  .plant-one-logo {
+    max-height: 42px;
+    object-fit: contain;
+  }
+}
+
+.auth-wrapper {
+  width: 460px;
+  min-height: 310px;
+  position: relative;
+  border-radius: 6px;
+  padding: 50px 60px 68px;
+  
+  @include shadow-style-5;
+  background-color: $brand-n8;
+  
+  .auth-title {
+    color: $brand-n2;
+    text-align: center;
+    @include is-size-h1-r;
+
+    margin-bottom: 20px;
+  }
+  
+  .auth-form {
+    .forgot-pwd {
+      @include flexbox;
+      @include justify-content(flex-end);
+
+      margin-top: 5px;
+    }
+    .auth-action {
+      margin-top: 68px;
+
+      .auth-submit-btn {
+        width: 100%;
+      }
+    }
+  }
+  
+  &.wide-container {
+    border-radius: 4px;
+    .auth-title {
+      padding-top: 20px;
+    }
+    .auth-form {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.auth-footer {
+  margin-top: auto;
+  margin-bottom: 20px;
+
+  .copy-right-text {
+    color: $brand-n8;
+    margin-top: 8px;
+    @include is-size-h6-r;
+  }
+}
+
+// --------------- Styles for registration screen --------------
+.auth-container {
+  width: 920px !important;
+  margin-top: 10vh;  
+  margin-bottom:20px;
+  padding: 0px !important;
+}
+
+.sections-wrapper {
+  height: 100%;
+  padding: 50px 60px !important;
+  @include flexbox;
+  @include justify-content(space-between);
+  @include webkit-scroller;
+}
+
+.left-section {
+  @include flex-basis(50%);
+  padding-right: 60px;
+}
+
+.vertical-separator {
+  border: 1px solid $brand-n6;
+}
+
+.right-section {
+  @include flex-basis(50%);
+  padding-left: 60px;
+}
+
+.plant-one-logo {
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: 22px;
+}
+
+.plant-one-desc {
+  @include is-size-h6-r;
+  color: $brand-n2;
+  margin-bottom: 42px;
+}
+
+.auth-content-box {
+  margin-top: 22px;
+  .content {
+    @include is-size-h4-r;
+    color: $brand-n2;
+  }
+}
+// ------------------------------------------------------------
